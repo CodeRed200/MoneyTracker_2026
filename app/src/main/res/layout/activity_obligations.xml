@@ -1,0 +1,1508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6FA"
+    tools:context=".ObligationsActivity">
+
+    <!-- ====================================== -->
+    <!-- TOOLBAR                                -->
+    <!-- ====================================== -->
+
+    <LinearLayout
+        android:id="@+id/obligationsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#FFFFFF"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/btnObligationsBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="#202334"
+            android:textSize="32sp"
+            android:contentDescription="Go back" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bills &amp; Payments"
+                android:textColor="#202334"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stay ahead of every due date"
+                android:textColor="#858B9E"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnAddObligation"
+            android:layout_width="105dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_login_logo"
+            android:gravity="center"
+            android:text="＋ Add Bill"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- ====================================== -->
+    <!-- MAIN CONTENT                           -->
+    <!-- ====================================== -->
+
+    <ScrollView
+        android:id="@+id/obligationsScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/obligationsToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!-- PAGE INTRO -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bills &amp; Unpaid Payments"
+                android:textColor="#202334"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Track upcoming bills, overdue balances, partial payments and financial commitments."
+                android:textColor="#858B9E"
+                android:textSize="12sp"
+                android:lineSpacingExtra="3dp" />
+
+            <!-- ====================================== -->
+            <!-- TOTAL UNPAID CARD                      -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/obligationOverviewCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/bg_login_logo"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL UNPAID OBLIGATIONS"
+                    android:textColor="#DDD9FF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:id="@+id/tvTotalUnpaidObligations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="₱0.00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="31sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUnpaidObligationsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Remaining balance across unpaid bills and scheduled payments"
+                    android:textColor="#DDD9FF"
+                    android:textSize="11sp"
+                    android:lineSpacingExtra="3dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="13dp"
+                    android:background="#55FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Paid"
+                            android:textColor="#DDD9FF"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvTotalObligationsPaid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="₱0.00"
+                            android:textColor="#FFFFFF"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="38dp"
+                        android:background="#55FFFFFF" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Due This Month"
+                            android:textColor="#DDD9FF"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tvObligationsDueThisMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="₱0.00"
+                            android:textColor="#FFFFFF"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- STATUS SUMMARY                         -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="11dp"
+                android:text="Payment Status Overview"
+                android:textColor="#202334"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- First row -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- UPCOMING -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="103dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="#EAF3FF"
+                        android:gravity="center"
+                        android:text="◷"
+                        android:textColor="#4285D4"
+                        android:textSize="19sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Upcoming"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvUpcomingObligationCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#4285D4"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- DUE TODAY -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="103dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="#FFF5E9"
+                        android:gravity="center"
+                        android:text="!"
+                        android:textColor="#D58A36"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Due Today"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvDueTodayCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#D58A36"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- OVERDUE -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="103dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="#FFF0F0"
+                        android:gravity="center"
+                        android:text="!"
+                        android:textColor="#D85D68"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Overdue"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvOverdueObligationCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#D85D68"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Second row -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <!-- PARTIALLY PAID -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="103dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="#EAF3FF"
+                        android:gravity="center"
+                        android:text="½"
+                        android:textColor="#4285D4"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Partially Paid"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvPartiallyPaidCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#4285D4"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- PAID -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="103dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="#E7F7F0"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#149B71"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Paid"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvPaidObligationCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#149B71"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- ADD / EDIT OBLIGATION FORM              -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/obligationFormCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvObligationFormTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Add Bill / Scheduled Payment"
+                        android:textColor="#202334"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCloseObligationForm"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_login_input"
+                        android:gravity="center"
+                        android:text="×"
+                        android:textColor="#858B9E"
+                        android:textSize="23sp"
+                        android:contentDescription="Close form" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/etObligationId"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone" />
+
+                <!-- QUICK BILL PRESETS -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Common Bills"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chipElectricity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="39dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="⚡ Electricity"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipInternet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="39dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="🌐 Internet"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipWater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="39dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="💧 Water"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipMobile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="39dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="📱 Mobile"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipRent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="39dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="🏠 Rent"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <!-- TYPE -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Payment Type *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spObligationType"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:entries="@array/obligation_types"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:spinnerMode="dropdown" />
+
+                <!-- PAYEE -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Payee / Provider *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etObligationPayee"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="Electricity provider, landlord..."
+                    android:inputType="textCapWords"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="13sp" />
+
+                <!-- DESCRIPTION -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Description *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etObligationDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="Monthly electricity bill..."
+                    android:inputType="textCapSentences"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="13sp" />
+
+                <!-- AMOUNT -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Amount Due (₱) *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etObligationAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="14sp" />
+
+                <!-- DUE DATE -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="First Due Date *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvObligationDueDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:text="Select due date"
+                    android:textColor="#50556B"
+                    android:textSize="13sp" />
+
+                <!-- REPEAT -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Repeat Schedule"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spObligationRepeat"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:entries="@array/obligation_repeat_options"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:spinnerMode="dropdown" />
+
+                <!-- NOTES -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Notes (Optional)"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etObligationNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:background="@drawable/bg_login_input"
+                    android:gravity="top"
+                    android:hint="Add payment details or reminders..."
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:padding="12dp"
+                    android:textColor="#202334"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="#EFEDFF"
+                    android:padding="11dp"
+                    android:text="Recurring bills create separate scheduled occurrences. Each occurrence has its own due date and payment status."
+                    android:textColor="#6558D3"
+                    android:textSize="10sp"
+                    android:lineSpacingExtra="3dp" />
+
+                <TextView
+                    android:id="@+id/tvObligationFormError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFF0F0"
+                    android:padding="10dp"
+                    android:textColor="#D85D68"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    tools:text="Please complete all required fields."
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/btnSaveObligation"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="#6558D3"
+                    android:text="Save Payment Schedule"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- FILTERS AND SEARCH                     -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:text="Payment Schedule"
+                android:textColor="#202334"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etObligationSearch"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_login_card"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawablePadding="9dp"
+                android:hint="Search provider or description"
+                android:inputType="text"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp"
+                android:singleLine="true"
+                android:textColor="#202334"
+                android:textColorHint="#A0A4B2"
+                android:textSize="12sp" />
+
+            <!-- STATUS FILTER -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="6dp"
+                android:text="Payment Status"
+                android:textColor="#50556B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spObligationStatusFilter"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_login_input"
+                android:entries="@array/obligation_status_filters"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:spinnerMode="dropdown" />
+
+            <!-- TYPE FILTER -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
+                android:text="Payment Type"
+                android:textColor="#50556B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spObligationTypeFilter"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_login_input"
+                android:entries="@array/obligation_types"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/tvObligationFilterSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Showing all unpaid obligations."
+                android:textColor="#858B9E"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/btnClearObligationFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_login_input"
+                android:gravity="center"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp"
+                android:text="Clear Filters"
+                android:textColor="#6558D3"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <!-- ====================================== -->
+            <!-- OBLIGATION RECORDS                     -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="My Obligations"
+                    android:textColor="#202334"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvObligationRecordCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 records"
+                    android:textColor="#858B9E"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/obligationsListCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <!-- LOADING -->
+
+                <LinearLayout
+                    android:id="@+id/obligationsLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="22dp"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:indeterminateTint="#6558D3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:text="Loading payment schedules..."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <!-- EMPTY STATE -->
+
+                <LinearLayout
+                    android:id="@+id/obligationsEmptyState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="#EFEDFF"
+                        android:gravity="center"
+                        android:text="◷"
+                        android:textColor="#6558D3"
+                        android:textSize="36sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="No Payment Schedules"
+                        android:textColor="#202334"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:text="Your bills, loan installments and scheduled payments will appear here."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp"
+                        android:lineSpacingExtra="4dp" />
+
+                </LinearLayout>
+
+                <!-- Generated dynamically in Kotlin -->
+
+                <LinearLayout
+                    android:id="@+id/obligationsListContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- RECORD PAYMENT FORM                   -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/paymentFormCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Record a Payment"
+                        android:textColor="#202334"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnClosePaymentForm"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_login_input"
+                        android:gravity="center"
+                        android:text="×"
+                        android:textColor="#858B9E"
+                        android:textSize="23sp"
+                        android:contentDescription="Close payment form" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/etPaymentObligationId"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone" />
+
+                <!-- SELECT OBLIGATION -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Select Bill / Payment *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spPaymentObligation"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:spinnerMode="dropdown" />
+
+                <!-- OUTSTANDING INFORMATION -->
+
+                <LinearLayout
+                    android:id="@+id/paymentOutstandingCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:background="#EFEDFF"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="REMAINING BALANCE"
+                        android:textColor="#6558D3"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvPaymentOutstandingBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="₱0.00"
+                        android:textColor="#6558D3"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvPaymentObligationInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Select an obligation to view its details."
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <!-- PAYMENT DATE -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Payment Date *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPaymentDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:text="Select payment date"
+                    android:textColor="#50556B"
+                    android:textSize="13sp" />
+
+                <!-- PAYMENT AMOUNT -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Amount Paid (₱) *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etPaymentAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="15sp" />
+
+                <!-- PAYMENT METHOD -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Payment Method"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spPaymentMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:entries="@array/payment_methods"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:spinnerMode="dropdown" />
+
+                <!-- ADVANCED PAYMENT ALLOCATION -->
+
+                <LinearLayout
+                    android:id="@+id/paymentAdvancedCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="#F8F8FC"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Payment Allocation (Optional)"
+                        android:textColor="#514B70"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Enter the breakdown from your lender statement. Leave blank to use the configured payment allocation rules."
+                        android:textColor="#858B9E"
+                        android:textSize="10sp"
+                        android:lineSpacingExtra="3dp" />
+
+                    <!-- PRINCIPAL -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Principal Portion (₱)"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etPaymentPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@drawable/bg_login_input"
+                        android:hint="Auto allocate"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        android:singleLine="true"
+                        android:textColor="#202334"
+                        android:textSize="13sp" />
+
+                    <!-- INTEREST -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Interest Portion (₱)"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etPaymentInterest"
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@drawable/bg_login_input"
+                        android:hint="Auto allocate"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        android:singleLine="true"
+                        android:textColor="#202334"
+                        android:textSize="13sp" />
+
+                    <!-- FEES -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Fees Portion (₱)"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etPaymentFees"
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@drawable/bg_login_input"
+                        android:hint="Auto allocate"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        android:singleLine="true"
+                        android:textColor="#202334"
+                        android:textSize="13sp" />
+
+                    <!-- REFERENCE NUMBER -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Reference Number (Optional)"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etPaymentReference"
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@drawable/bg_login_input"
+                        android:hint="Transaction reference"
+                        android:inputType="text"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        android:singleLine="true"
+                        android:textColor="#202334"
+                        android:textSize="13sp" />
+
+                    <!-- PAYMENT NOTES -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Notes (Optional)"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etPaymentNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/bg_login_input"
+                        android:gravity="top"
+                        android:hint="Add payment notes..."
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:padding="11dp"
+                        android:textColor="#202334"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvPaymentFormError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:background="#FFFFF0F0"
+                    android:padding="10dp"
+                    android:textColor="#D85D68"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    tools:text="Payment amount exceeds the outstanding balance."
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/btnSavePayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="#6558D3"
+                    android:text="Save Payment"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- PAYMENT HISTORY                        -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:text="Payment History"
+                android:textColor="#202334"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="All recorded bill and loan payments."
+                android:textColor="#858B9E"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:id="@+id/paymentHistoryCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/paymentHistoryLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:indeterminateTint="#6558D3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Loading payment history..."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvPaymentHistoryEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="22dp"
+                    android:text="No payment history recorded yet."
+                    android:textColor="#858B9E"
+                    android:textSize="11sp"
+                    android:visibility="visible" />
+
+                <!-- Payment history generated in Kotlin -->
+
+                <LinearLayout
+                    android:id="@+id/paymentHistoryContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- ERROR AND LOADING                      -->
+            <!-- ====================================== -->
+
+            <ProgressBar
+                android:id="@+id/obligationsProgress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:indeterminateTint="#6558D3"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvObligationsError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="#FFFFF0F0"
+                android:padding="12dp"
+                android:textColor="#D85D68"
+                android:textSize="11sp"
+                android:visibility="gone"
+                tools:text="Unable to load payment schedules. Please try again."
+                tools:visibility="visible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

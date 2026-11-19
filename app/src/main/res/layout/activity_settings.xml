@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    tools:context=".SettingsActivity">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:id="@+id/settingsToolbar"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:background="@color/app_surface"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btnSettingsBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Go back"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="@color/app_text"
+            android:textSize="32sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textColor="@color/app_text"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personalize your finance app"
+                android:textColor="@color/app_text_secondary"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Scrollable settings content -->
+    <ScrollView
+        android:id="@+id/settingsScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/settingsToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!-- Intro -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="App Settings"
+                android:textColor="@color/app_text"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:lineSpacingExtra="3dp"
+                android:text="Manage your personal information, preferences and account security."
+                android:textColor="@color/app_text_secondary"
+                android:textSize="12sp" />
+
+            <!-- Profile -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="22dp"
+                android:text="MY PROFILE" />
+
+            <LinearLayout
+                android:id="@+id/settingsProfileCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvSettingsProfileInitial"
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:background="@drawable/bg_login_logo"
+                        android:gravity="center"
+                        android:text="U"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvSettingsName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Your Name"
+                            android:textColor="@color/app_text"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvSettingsUsername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@username"
+                            android:textColor="@color/app_text_secondary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvSettingsEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="your@email.com"
+                            android:textColor="@color/app_text_secondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnEditProfile"
+                        style="@style/SettingsActionText"
+                        android:layout_width="60dp"
+                        android:layout_height="36dp"
+                        android:text="Edit" />
+                </LinearLayout>
+
+                <!-- Profile edit form -->
+                <LinearLayout
+                    android:id="@+id/profileEditForm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View style="@style/SettingsDivider" />
+
+                    <TextView style="@style/SettingsFieldLabel"
+                        android:layout_marginTop="14dp"
+                        android:text="Full Name" />
+
+                    <EditText
+                        android:id="@+id/etSettingsFullName"
+                        style="@style/SettingsEditText"
+                        android:hint="Enter your full name"
+                        android:inputType="textCapWords" />
+
+                    <TextView style="@style/SettingsFieldLabel"
+                        android:layout_marginTop="12dp"
+                        android:text="Username" />
+
+                    <EditText
+                        android:id="@+id/etSettingsUsername"
+                        style="@style/SettingsEditText"
+                        android:hint="Enter your username"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:id="@+id/tvSettingsProfileError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:textColor="@color/danger_color"
+                        android:textSize="10sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnCancelProfileEdit"
+                            style="@style/SettingsSecondaryButton"
+                            android:layout_width="0dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="Cancel" />
+
+                        <Button
+                            android:id="@+id/btnSaveProfile"
+                            style="@style/SettingsPrimaryButton"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:text="Save Profile" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- App preferences -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="APP PREFERENCES" />
+
+            <LinearLayout
+                android:id="@+id/settingsPreferencesCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/SettingsIconTile"
+                        android:text="◐"
+                        android:textColor="@color/brand_primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText"
+                            android:text="Dark Mode" />
+
+                        <TextView style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Use a darker appearance throughout the app" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchDarkMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:contentDescription="Enable dark mode"
+                        android:showText="false"
+                        app:thumbTint="@color/brand_primary"
+                        app:trackTint="@color/app_outline" />
+                </LinearLayout>
+
+                <View style="@style/SettingsDivider" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" />
+
+                <TextView style="@style/SettingsPrimaryText" android:text="Currency" />
+                <TextView style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="4dp"
+                    android:text="Currency used for financial records" />
+
+                <Spinner
+                    android:id="@+id/spSettingsCurrency"
+                    style="@style/SettingsSpinner"
+                    android:layout_marginTop="9dp"
+                    android:entries="@array/settings_currency_options" />
+
+                <TextView style="@style/SettingsPrimaryText"
+                    android:layout_marginTop="17dp"
+                    android:text="Time Zone" />
+
+                <TextView
+                    android:id="@+id/tvSettingsTimezone"
+                    style="@style/SettingsStaticField"
+                    android:layout_marginTop="5dp"
+                    android:text="Asia/Manila (Philippine Time)" />
+
+                <TextView style="@style/SettingsPrimaryText"
+                    android:layout_marginTop="17dp"
+                    android:text="Date Format" />
+
+                <Spinner
+                    android:id="@+id/spSettingsDateFormat"
+                    style="@style/SettingsSpinner"
+                    android:layout_marginTop="8dp"
+                    android:entries="@array/settings_date_formats" />
+
+                <Button
+                    android:id="@+id/btnSavePreferences"
+                    style="@style/SettingsPrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Save Preferences" />
+            </LinearLayout>
+
+            <!-- Payday configuration -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="PAYDAY &amp; SALARY SETTINGS" />
+
+            <LinearLayout
+                android:id="@+id/settingsPaydayCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <TextView style="@style/SettingsPrimaryText" android:text="Pay Schedule" />
+                <TextView style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="4dp"
+                    android:text="Choose how frequently you receive your salary." />
+
+                <Spinner
+                    android:id="@+id/spSettingsPaySchedule"
+                    style="@style/SettingsSpinner"
+                    android:layout_marginTop="9dp"
+                    android:entries="@array/settings_pay_schedule_options" />
+
+                <TextView style="@style/SettingsPrimaryText"
+                    android:layout_marginTop="15dp"
+                    android:text="First Payday" />
+
+                <EditText
+                    android:id="@+id/etSettingsPaydayOne"
+                    style="@style/SettingsEditText"
+                    android:layout_marginTop="7dp"
+                    android:hint="15"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:text="15" />
+
+                <TextView style="@style/SettingsPrimaryText"
+                    android:layout_marginTop="15dp"
+                    android:text="Second Payday" />
+
+                <Spinner
+                    android:id="@+id/spSettingsSecondPaydayType"
+                    style="@style/SettingsSpinner"
+                    android:layout_marginTop="7dp"
+                    android:entries="@array/settings_second_payday_options" />
+
+                <LinearLayout
+                    android:id="@+id/settingsSecondPaydayCustomContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView style="@style/SettingsFieldLabel"
+                        android:layout_marginTop="13dp"
+                        android:text="Second Payday Day" />
+
+                    <EditText
+                        android:id="@+id/etSettingsPaydayTwo"
+                        style="@style/SettingsEditText"
+                        android:layout_marginTop="6dp"
+                        android:hint="30"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSettingsPaydayExplanation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_settings_info"
+                    android:lineSpacingExtra="3dp"
+                    android:padding="11dp"
+                    android:text="Your first salary covers the 15th through month-end. Your second salary covers the 1st–14th of the following month."
+                    android:textColor="@color/brand_primary"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tvSettingsPaydayError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:textColor="@color/danger_color"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btnSavePaydaySettings"
+                    style="@style/SettingsPrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="14dp"
+                    android:text="Save Payday Settings" />
+            </LinearLayout>
+
+            <!-- Account security -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="ACCOUNT &amp; SECURITY" />
+
+            <LinearLayout
+                android:id="@+id/settingsSecurityCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView style="@style/SettingsIconTile"
+                        android:background="@color/success_soft"
+                        android:text="✓"
+                        android:textColor="@color/success_color" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText" android:text="Email Verification" />
+                        <TextView
+                            android:id="@+id/tvSettingsEmailVerification"
+                            style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Checking verification status..." />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnSettingsVerifyEmail"
+                        style="@style/SettingsActionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="Verify" />
+                </LinearLayout>
+
+                <View style="@style/SettingsDivider" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView style="@style/SettingsIconTile"
+                        android:text="⌑"
+                        android:textColor="@color/brand_primary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText" android:text="Change Password" />
+                        <TextView style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Request a password reset email" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnSettingsChangePassword"
+                        style="@style/SettingsActionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="Reset" />
+                </LinearLayout>
+
+                <View style="@style/SettingsDivider" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView style="@style/SettingsIconTile"
+                        android:background="@color/warning_soft"
+                        android:text="◎"
+                        android:textColor="@color/warning_color" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText" android:text="Biometric App Lock" />
+                        <TextView style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Use fingerprint or device biometrics" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchBiometricLock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:contentDescription="Enable biometric app lock"
+                        android:showText="false"
+                        app:thumbTint="@color/brand_primary"
+                        app:trackTint="@color/app_outline" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSettingsSecurityStatus"
+                    style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Biometric support must be configured and available on this device." />
+            </LinearLayout>
+
+            <!-- Cloud backup -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="CLOUD DATA &amp; BACKUP" />
+
+            <LinearLayout
+                android:id="@+id/settingsSyncCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView style="@style/SettingsIconTile"
+                        android:background="@color/success_soft"
+                        android:text="☁"
+                        android:textColor="@color/success_color"
+                        android:textSize="23sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText" android:text="Firebase Cloud Sync" />
+                        <TextView
+                            android:id="@+id/tvSettingsSyncStatus"
+                            style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Checking sync status..." />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvSettingsSyncIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/brand_soft"
+                        android:padding="8dp"
+                        android:text="..."
+                        android:textColor="@color/brand_primary"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSettingsLastSync"
+                    style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="12dp"
+                    android:text="Last successful sync: Not available" />
+
+                <Button
+                    android:id="@+id/btnSettingsSyncNow"
+                    style="@style/SettingsPrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="13dp"
+                    android:text="Sync Data Now" />
+
+                <ProgressBar
+                    android:id="@+id/settingsSyncProgress"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:indeterminateTint="@color/brand_primary"
+                    android:visibility="gone" />
+
+                <TextView style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Your records are associated with your signed-in account. Make sure synchronization succeeds before relying on a new device to contain your latest changes." />
+            </LinearLayout>
+
+            <!-- Data management -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="DATA MANAGEMENT" />
+
+            <LinearLayout
+                android:id="@+id/settingsDataCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView style="@style/SettingsIconTile"
+                        android:background="@color/success_soft"
+                        android:text="⇩"
+                        android:textColor="@color/success_color"
+                        android:textSize="22sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText" android:text="Export Financial Data" />
+                        <TextView style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Export your records to CSV files" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnSettingsExportData"
+                        style="@style/SettingsActionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="Export" />
+                </LinearLayout>
+
+                <View style="@style/SettingsDivider" android:layout_marginTop="15dp" android:layout_marginBottom="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView style="@style/SettingsIconTile"
+                        android:background="@color/warning_soft"
+                        android:text="↻"
+                        android:textColor="@color/warning_color"
+                        android:textSize="21sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText" android:text="Clear Temporary Cache" />
+                        <TextView style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Remove temporary app files, not financial records" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnSettingsClearCache"
+                        style="@style/SettingsActionTextWarning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="Clear" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSettingsDataStatus"
+                    style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- About -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="ABOUT" />
+
+            <LinearLayout
+                android:id="@+id/settingsAboutCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="47dp"
+                        android:layout_height="47dp"
+                        android:background="@drawable/bg_login_logo"
+                        android:gravity="center"
+                        android:text="₱"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/SettingsPrimaryText"
+                            android:text="My Finance"
+                            android:textSize="14sp" />
+                        <TextView style="@style/SettingsSecondaryText"
+                            android:layout_marginTop="3dp"
+                            android:text="Personal Finance Tracker" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvSettingsAppVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/brand_soft"
+                        android:padding="8dp"
+                        android:text="v1.0.0"
+                        android:textColor="@color/brand_primary"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View style="@style/SettingsDivider" android:layout_marginTop="15dp" android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/btnSettingsPrivacy"
+                    style="@style/SettingsLinkText"
+                    android:text="Privacy &amp; Data Information     ›" />
+
+                <TextView
+                    android:id="@+id/btnSettingsTerms"
+                    style="@style/SettingsLinkText"
+                    android:text="Terms &amp; Conditions     ›" />
+            </LinearLayout>
+
+            <!-- Account actions -->
+            <TextView
+                style="@style/SettingsSectionLabel"
+                android:layout_marginTop="23dp"
+                android:text="ACCOUNT ACTIONS" />
+
+            <LinearLayout
+                android:id="@+id/settingsAccountActionsCard"
+                style="@style/SettingsCard"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnSettingsLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:backgroundTint="@color/danger_soft"
+                    android:text="Log Out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/danger_color"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnSettingsDeleteAccount"
+                    style="@style/SettingsDangerAction"
+                    android:layout_marginTop="9dp"
+                    android:text="Delete My Account" />
+
+                <TextView style="@style/SettingsSecondaryText"
+                    android:layout_marginTop="11dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Deleting your account is permanent and may remove your cloud records. Export your data before proceeding." />
+            </LinearLayout>
+
+            <!-- General status -->
+            <ProgressBar
+                android:id="@+id/settingsProgress"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:indeterminateTint="@color/brand_primary"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvSettingsError"
+                style="@style/SettingsErrorMessage"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                tools:text="Unable to save your settings. Please try again."
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvSettingsSuccess"
+                style="@style/SettingsSuccessMessage"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                tools:text="Settings saved successfully."
+                tools:visibility="visible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

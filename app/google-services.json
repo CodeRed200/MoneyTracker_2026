@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1055557760477",
+    "firebase_url": "https://moneytracker-52f5b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "moneytracker-52f5b",
+    "storage_bucket": "moneytracker-52f5b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055557760477:android:30083878759906aa1f3234",
+        "android_client_info": {
+          "package_name": "com.example.moneytracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgk8v5Cq0NjWmRiqguVsty8N7HlxAFQZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

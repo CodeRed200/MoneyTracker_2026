@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6FA"
+    tools:context=".CalendarActivity">
+
+    <LinearLayout
+        android:id="@+id/calendarToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#FFFFFF"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/btnCalendarBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="Go back"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="#202334"
+            android:textSize="32sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payday Calendar"
+                android:textColor="#202334"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plan your financial activities"
+                android:textColor="#858B9E"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnAddCalendarEvent"
+            android:layout_width="91dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_login_logo"
+            android:contentDescription="Add calendar event"
+            android:gravity="center"
+            android:text="＋ Event"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/calendarScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/calendarToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Financial Calendar"
+                android:textColor="#202334"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Keep track of paydays, expenses, loans and upcoming bills."
+                android:textColor="#858B9E"
+                android:textSize="12sp" />
+
+            <!-- NEXT PAYDAY -->
+            <LinearLayout
+                android:id="@+id/nextPaydayCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/bg_login_logo"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:letterSpacing="0.08"
+                        android:text="NEXT EXPECTED PAYDAY"
+                        android:textColor="#DDD9FF"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvPaydayCountdown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#3EFFFFFF"
+                        android:padding="7dp"
+                        android:text="Upcoming"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvNextPaydayName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="15th Payday"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNextPaydayDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Expected payment date"
+                    android:textColor="#DDD9FF"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="13dp"
+                    android:background="#55FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expected Net Salary"
+                    android:textColor="#DDD9FF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvNextPaydayAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="₱0.00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- CALENDAR HEADING / TODAY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Financial Schedule"
+                    android:textColor="#202334"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnCalendarToday"
+                    android:layout_width="64dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_login_input"
+                    android:gravity="center"
+                    android:text="Today"
+                    android:textColor="#6558D3"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- MONTH NAVIGATION -->
+            <LinearLayout
+                android:id="@+id/calendarMonthNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_login_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/btnPreviousMonth"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Previous month"
+                    android:gravity="center"
+                    android:text="‹"
+                    android:textColor="#6558D3"
+                    android:textSize="29sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCalendarMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="November 2026"
+                    android:textColor="#202334"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnNextMonth"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Next month"
+                    android:gravity="center"
+                    android:text="›"
+                    android:textColor="#6558D3"
+                    android:textSize="29sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- MODE SELECTOR -->
+            <LinearLayout
+                android:id="@+id/calendarViewSelector"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="12dp"
+                android:background="#EAEAF1"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/btnCalendarMonthView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_logo"
+                    android:gravity="center"
+                    android:text="Month"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnCalendarWeekView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Week"
+                    android:textColor="#687087"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/btnCalendarAgendaView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Agenda"
+                    android:textColor="#687087"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- LEGEND -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#15966B" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5dp" android:layout_marginEnd="12dp" android:text="Income" android:textColor="#858B9E" android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#D97732" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5dp" android:layout_marginEnd="12dp" android:text="Expense" android:textColor="#858B9E" android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#D34F5C" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5dp" android:layout_marginEnd="12dp" android:text="Bills / Loans" android:textColor="#858B9E" android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#477ED4" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5dp" android:layout_marginEnd="12dp" android:text="Savings" android:textColor="#858B9E" android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <View android:layout_width="8dp" android:layout_height="8dp" android:background="#9270C5" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5dp" android:text="Reminder" android:textColor="#858B9E" android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- MONTH / WEEK GRID -->
+            <LinearLayout
+                android:id="@+id/calendarMonthContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <FrameLayout
+                    android:id="@+id/calendarGridFrame"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="280dp"
+                    android:paddingBottom="5dp">
+                    <LinearLayout
+                        android:id="@+id/calendarGridContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                    <TextView
+                        android:id="@+id/tvCalendarLoading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:text="Loading calendar..."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- DEDICATED AGENDA MODE: SEPARATE FROM UPCOMING ACTIVITIES -->
+            <LinearLayout
+                android:id="@+id/calendarAgendaViewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="13dp"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/tvCalendarAgendaViewEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="22dp"
+                    android:text="No activities scheduled for this month."
+                    android:textColor="#858B9E"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- SELECTED DATE -->
+            <LinearLayout
+                android:id="@+id/selectedDateCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selected Date"
+                    android:textColor="#202334"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvSelectedCalendarDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Select a date to view activity."
+                    android:textColor="#858B9E"
+                    android:textSize="11sp" />
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="13dp" android:background="#EAECF2" />
+                <LinearLayout
+                    android:id="@+id/calendarDayDetailsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvCalendarEmptyDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:text="No financial activity for this date."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PAYDAY FORECAST -->
+            <LinearLayout
+                android:id="@+id/paydayForecastCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Until Your Next Payday" android:textColor="#202334" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Estimated cash position after upcoming obligations." android:textColor="#858B9E" android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:orientation="horizontal">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recorded Cash Balance" android:textColor="#858B9E" android:textSize="10sp" />
+                        <TextView android:id="@+id/tvForecastCashBalance" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="₱0.00" android:textColor="#202334" android:textSize="17sp" android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Upcoming Obligations" android:textColor="#858B9E" android:textSize="10sp" />
+                        <TextView android:id="@+id/tvForecastObligations" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="₱0.00" android:textColor="#D85D68" android:textSize="17sp" android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="14dp" android:background="#EAECF2" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="13dp" android:text="Estimated Remaining Cash" android:textColor="#858B9E" android:textSize="11sp" />
+                <TextView android:id="@+id/tvForecastRemainingCash" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="₱0.00" android:textColor="#149B71" android:textSize="25sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvForecastExplanation" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:text="Forecast based on recorded cash and upcoming obligations." android:textColor="#858B9E" android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- UPCOMING ACTIVITIES (ALWAYS VISIBLE IN ALL CALENDAR MODES) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Upcoming Activities" android:textColor="#202334" android:textSize="16sp" android:textStyle="bold" />
+                <TextView android:id="@+id/btnViewAllEvents" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="?attr/selectableItemBackground" android:padding="7dp" android:text="View all →" android:textColor="#6558D3" android:textSize="11sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/calendarAgendaContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="15dp">
+                <TextView
+                    android:id="@+id/tvCalendarAgendaEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="No upcoming activities."
+                    android:textColor="#858B9E"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- CUSTOM PAYDAY SCHEDULE -->
+            <LinearLayout
+                android:id="@+id/paydayScheduleCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Customize Payroll Calendar" android:textColor="#202334" android:textSize="16sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Set your expected recurring salary dates and amounts." android:textColor="#858B9E" android:textSize="11sp" />
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="17dp" android:text="First Payday" android:textColor="#6558D3" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="11dp" android:layout_marginBottom="6dp" android:text="Day of month (1–31)" android:textColor="#50556B" android:textSize="11sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etPaydayDayOne" android:layout_width="match_parent" android:layout_height="49dp" android:background="@drawable/bg_login_input" android:hint="15" android:inputType="number" android:maxLength="2" android:paddingStart="13dp" android:paddingEnd="13dp" android:singleLine="true" android:text="15" android:textColor="#202334" android:textSize="14sp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="11dp" android:layout_marginBottom="6dp" android:text="Expected Net Salary (₱)" android:textColor="#50556B" android:textSize="11sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etPaydayAmountOne" android:layout_width="match_parent" android:layout_height="49dp" android:background="@drawable/bg_login_input" android:hint="0.00" android:inputType="numberDecimal" android:paddingStart="13dp" android:paddingEnd="13dp" android:singleLine="true" android:text="0" android:textColor="#202334" android:textSize="14sp" />
+
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="17dp" android:background="#EAECF2" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Second Payday" android:textColor="#6558D3" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="11dp" android:layout_marginBottom="6dp" android:text="Day of month (0 = month-end)" android:textColor="#50556B" android:textSize="11sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etPaydayDayTwo" android:layout_width="match_parent" android:layout_height="49dp" android:background="@drawable/bg_login_input" android:hint="0" android:inputType="number" android:maxLength="2" android:paddingStart="13dp" android:paddingEnd="13dp" android:singleLine="true" android:text="0" android:textColor="#202334" android:textSize="14sp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="11dp" android:layout_marginBottom="6dp" android:text="Expected Net Salary (₱)" android:textColor="#50556B" android:textSize="11sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etPaydayAmountTwo" android:layout_width="match_parent" android:layout_height="49dp" android:background="@drawable/bg_login_input" android:hint="0.00" android:inputType="numberDecimal" android:paddingStart="13dp" android:paddingEnd="13dp" android:singleLine="true" android:text="0" android:textColor="#202334" android:textSize="14sp" />
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:background="#EFEDFF" android:lineSpacingExtra="3dp" android:padding="11dp" android:text="A day value of 0 means the last calendar day of the month. For example, February uses its actual final day. Recorded salary amounts take priority over forecasts." android:textColor="#6558D3" android:textSize="10sp" />
+                <Button android:id="@+id/btnSavePaydaySchedule" android:layout_width="match_parent" android:layout_height="51dp" android:layout_marginTop="14dp" android:backgroundTint="#6558D3" android:text="Save Payday Schedule" android:textAllCaps="false" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- STATUS / ERROR -->
+            <ProgressBar
+                android:id="@+id/calendarProgress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:indeterminateTint="#6558D3"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvCalendarError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="#FFFFF0F0"
+                android:padding="12dp"
+                android:textColor="#D85D68"
+                android:textSize="11sp"
+                android:visibility="gone"
+                tools:text="Unable to load calendar information."
+                tools:visibility="visible" />
+
+            <View android:layout_width="match_parent" android:layout_height="20dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

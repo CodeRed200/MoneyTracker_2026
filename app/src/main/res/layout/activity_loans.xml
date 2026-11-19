@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6FA"
+    tools:context=".LoansActivity">
+
+    <!-- ====================================== -->
+    <!-- TOOLBAR                                -->
+    <!-- ====================================== -->
+
+    <LinearLayout
+        android:id="@+id/loansToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#FFFFFF"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/btnLoansBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="#202334"
+            android:textSize="32sp"
+            android:contentDescription="Go back" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loans &amp; Interest"
+                android:textColor="#202334"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manage your debts and repayments"
+                android:textColor="#858B9E"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnAddLoan"
+            android:layout_width="95dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_login_logo"
+            android:gravity="center"
+            android:text="＋ Add Loan"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- ====================================== -->
+    <!-- MAIN CONTENT                           -->
+    <!-- ====================================== -->
+
+    <ScrollView
+        android:id="@+id/loansScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/loansToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!-- PAGE INTRO -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Loans Overview"
+                android:textColor="#202334"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Monitor borrowed money, interest, installments and repayment progress."
+                android:textColor="#858B9E"
+                android:textSize="12sp"
+                android:lineSpacingExtra="3dp" />
+
+            <!-- ====================================== -->
+            <!-- TOTAL DEBT CARD                        -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/loanOverviewCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/bg_login_logo"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL OUTSTANDING DEBT"
+                    android:textColor="#DDD9FF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:id="@+id/tvTotalOutstandingDebt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="₱0.00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="31sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvOutstandingDebtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Remaining balance across all active loans"
+                    android:textColor="#DDD9FF"
+                    android:textSize="11sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressOverallLoanRepayment"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="9dp"
+                    android:layout_marginTop="17dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressBackgroundTint="#66FFFFFF"
+                    android:progressTint="#FFFFFF"
+                    android:indeterminate="false" />
+
+                <TextView
+                    android:id="@+id/tvOverallLoanProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="0% of total debt repaid"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- LOAN STATISTICS                        -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="11dp"
+                android:text="Debt Statistics"
+                android:textColor="#202334"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Principal and Repaid -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:background="#EFEDFF"
+                        android:gravity="center"
+                        android:text="₱"
+                        android:textColor="#6558D3"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Total Principal"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalLoanPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="₱0.00"
+                        android:textColor="#6558D3"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:background="#E7F7F0"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#149B71"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Total Repaid"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalLoanRepaid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="₱0.00"
+                        android:textColor="#149B71"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Interest and Active Loans -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:background="#FFF5E9"
+                        android:gravity="center"
+                        android:text="%"
+                        android:textColor="#D58A36"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Total Interest"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalLoanInterest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="₱0.00"
+                        android:textColor="#D58A36"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_login_card"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:background="#EAF3FF"
+                        android:gravity="center"
+                        android:text="▣"
+                        android:textColor="#4285D4"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Active Loans"
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvActiveLoanCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#4285D4"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- UPCOMING INSTALLMENTS                  -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/upcomingLoanCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Upcoming Installments"
+                        android:textColor="#202334"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvUpcomingLoanCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#FFF5E9"
+                        android:padding="7dp"
+                        android:text="0 upcoming"
+                        android:textColor="#D58A36"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvUpcomingInstallmentTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:text="₱0.00"
+                    android:textColor="#D58A36"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Total scheduled installment amount"
+                    android:textColor="#858B9E"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:id="@+id/upcomingInstallmentContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvUpcomingLoanEmpty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="No upcoming installments."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnViewAllLoanPayments"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_login_input"
+                    android:gravity="center"
+                    android:text="View Payment Schedule →"
+                    android:textColor="#6558D3"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- ADD / EDIT LOAN FORM                   -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/loanFormCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvLoanFormTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Add Loan / Installment Plan"
+                        android:textColor="#202334"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCloseLoanForm"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_login_input"
+                        android:gravity="center"
+                        android:text="×"
+                        android:textColor="#858B9E"
+                        android:textSize="23sp"
+                        android:contentDescription="Close loan form" />
+
+                </LinearLayout>
+
+                <!-- LOAN EDIT ID -->
+
+                <EditText
+                    android:id="@+id/etLoanId"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvLoanEditNotice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#EFEDFF"
+                    android:padding="10dp"
+                    android:textColor="#6558D3"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <!-- COMMON LENDERS -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Common Providers"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chipShopeePay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="ShopeePay"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipHomeCredit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="Home Credit"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipGLoan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="38dp"
+                            android:layout_marginEnd="7dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="GLoan"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipOtherLender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="38dp"
+                            android:background="@drawable/bg_login_input"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="Other"
+                            android:textColor="#50556B"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <!-- PROVIDER -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Lender / Provider *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanProvider"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="ShopeePay, Home Credit..."
+                    android:inputType="textCapWords"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="13sp" />
+
+                <!-- LOAN NAME -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Loan Name *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanName"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="Phone installment, cash loan..."
+                    android:inputType="textCapSentences"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="13sp" />
+
+                <!-- PRINCIPAL -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Amount Borrowed / Principal (₱) *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanPrincipal"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:textColor="#202334"
+                    android:textSize="14sp" />
+
+                <!-- TERM -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Number of Monthly Payments *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanTerm"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="12"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:text="12"
+                    android:textColor="#202334"
+                    android:textSize="14sp" />
+
+                <!-- FIXED INTEREST -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Total Interest from Lender (₱)"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanFixedInterest"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="#202334"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Use the total interest shown in your lender's official statement. Enter 0 for interest-free loans."
+                    android:textColor="#858B9E"
+                    android:textSize="10sp" />
+
+                <!-- FEES -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Additional Fees (₱)"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanFees"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="#202334"
+                    android:textSize="14sp" />
+
+                <!-- FIRST DUE DATE -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="First Installment Due Date *"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLoanFirstDueDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/bg_login_input"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:text="Select first due date"
+                    android:textColor="#50556B"
+                    android:textSize="13sp" />
+
+                <!-- ====================================== -->
+                <!-- ADVANCED INTEREST CALCULATOR           -->
+                <!-- ====================================== -->
+
+                <LinearLayout
+                    android:id="@+id/loanAdvancedCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:background="#F8F8FC"
+                    android:orientation="vertical"
+                    android:padding="13dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Advanced Interest Calculator"
+                        android:textColor="#514B70"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Optional: calculate estimated interest using your chosen method."
+                        android:textColor="#858B9E"
+                        android:textSize="10sp" />
+
+                    <!-- INTEREST METHOD -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Interest Calculation Method"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spLoanInterestMethod"
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp"
+                        android:background="@drawable/bg_login_input"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:spinnerMode="dropdown" />
+
+                    <!-- INTEREST RATE -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Interest Rate (%)"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etLoanRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp"
+                        android:background="@drawable/bg_login_input"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        android:singleLine="true"
+                        android:text="0"
+                        android:textColor="#202334"
+                        android:textSize="14sp" />
+
+                    <!-- RATE PERIOD -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Rate Period"
+                        android:textColor="#50556B"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spLoanRatePeriod"
+                        android:layout_width="match_parent"
+                        android:layout_height="49dp"
+                        android:background="@drawable/bg_login_input"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:spinnerMode="dropdown" />
+
+                    <TextView
+                        android:id="@+id/tvLoanMethodDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="#EFEDFF"
+                        android:padding="10dp"
+                        android:text="Choose an interest method to calculate an estimate."
+                        android:textColor="#6558D3"
+                        android:textSize="10sp"
+                        android:lineSpacingExtra="3dp" />
+
+                </LinearLayout>
+
+                <!-- LOAN NOTES -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Notes (Optional)"
+                    android:textColor="#50556B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoanNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:background="@drawable/bg_login_input"
+                    android:gravity="top"
+                    android:hint="Add lender details or repayment notes..."
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:padding="12dp"
+                    android:textColor="#202334"
+                    android:textSize="12sp" />
+
+                <!-- ====================================== -->
+                <!-- LOAN CALCULATION PREVIEW              -->
+                <!-- ====================================== -->
+
+                <LinearLayout
+                    android:id="@+id/loanCalculationCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:background="#EFEDFF"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Loan Calculation Preview"
+                        android:textColor="#514B70"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Estimated Interest"
+                            android:textColor="#6558D3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvLoanPreviewInterest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₱0.00"
+                            android:textColor="#6558D3"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Principal + Interest + Fees"
+                            android:textColor="#6558D3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvLoanPreviewTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₱0.00"
+                            android:textColor="#6558D3"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="#DCD6FF" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Estimated Monthly Installment"
+                        android:textColor="#514B70"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvLoanPreviewInstallment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="₱0.00"
+                        android:textColor="#6558D3"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Estimates are for planning only. Use your lender's official repayment schedule whenever available."
+                        android:textColor="#858B9E"
+                        android:textSize="9sp"
+                        android:lineSpacingExtra="3dp" />
+
+                </LinearLayout>
+
+                <!-- FORM ERROR -->
+
+                <TextView
+                    android:id="@+id/tvLoanFormError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFF0F0"
+                    android:padding="11dp"
+                    android:textColor="#D85D68"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    tools:text="Please complete all required loan information."
+                    tools:visibility="visible" />
+
+                <!-- SAVE BUTTON -->
+
+                <Button
+                    android:id="@+id/btnSaveLoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="#6558D3"
+                    android:text="Save Loan &amp; Schedule"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- SEARCH AND FILTER                      -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:text="My Loan Records"
+                android:textColor="#202334"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etLoanSearch"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_login_card"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawablePadding="9dp"
+                android:hint="Search lender or loan name"
+                android:inputType="text"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp"
+                android:singleLine="true"
+                android:textColor="#202334"
+                android:textColorHint="#A0A4B2"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/spLoanStatusFilter"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_login_input"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:spinnerMode="dropdown"
+                android:contentDescription="Filter loans by status" />
+
+            <TextView
+                android:id="@+id/tvLoanRecordCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="0 loan records"
+                android:textColor="#858B9E"
+                android:textSize="10sp" />
+
+            <!-- ====================================== -->
+            <!-- LOAN RECORD LIST                       -->
+            <!-- ====================================== -->
+
+            <LinearLayout
+                android:id="@+id/loanRecordsCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/loansLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="23dp"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:indeterminateTint="#6558D3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:text="Loading loan records..."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/loansEmptyState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="26dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="#EFEDFF"
+                        android:gravity="center"
+                        android:text="▣"
+                        android:textColor="#6558D3"
+                        android:textSize="33sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="No Loans Recorded"
+                        android:textColor="#202334"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:text="Add your first loan to start tracking principal, interest and installment payments."
+                        android:textColor="#858B9E"
+                        android:textSize="11sp"
+                        android:lineSpacingExtra="4dp" />
+
+                </LinearLayout>
+
+                <!-- Loan cards dynamically generated in Kotlin -->
+
+                <LinearLayout
+                    android:id="@+id/loanListContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- PAYMENT HISTORY                       -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:text="Loan Repayment History"
+                android:textColor="#202334"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/loanPaymentHistoryCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/bg_login_card"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvLoanPaymentHistoryEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="No loan repayments recorded yet."
+                    android:textColor="#858B9E"
+                    android:textSize="11sp" />
+
+                <!-- Payment history generated dynamically in Kotlin -->
+
+                <LinearLayout
+                    android:id="@+id/loanPaymentHistoryContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- ====================================== -->
+            <!-- LOAN ERRORS                            -->
+            <!-- ====================================== -->
+
+            <TextView
+                android:id="@+id/tvLoansError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="#FFFFF0F0"
+                android:padding="12dp"
+                android:textColor="#D85D68"
+                android:textSize="11sp"
+                android:visibility="gone"
+                tools:text="Unable to load loans. Please try again."
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/loansProgress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:indeterminateTint="#6558D3"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

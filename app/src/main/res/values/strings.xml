@@ -1,0 +1,153 @@
+<resources>
+    <string name="app_name">MoneyTracker</string>
+    <string name="username">username</string>
+
+    <string-array name="goal_movement_types">
+        <item>Contribution</item>
+        <item>Withdrawal</item>
+    </string-array>
+
+    <string-array name="loan_interest_methods">
+        <item>Manual</item>
+        <item>Flat</item>
+        <item>Reducing balance</item>
+        <item>Fixed total interest</item>
+        <item>Interest-free</item>
+    </string-array>
+
+    <string-array name="loan_rate_periods">
+        <item>Monthly</item>
+        <item>Annual</item>
+    </string-array>
+
+    <string-array name="loan_status_filters">
+        <item>All loans</item>
+        <item>Active</item>
+        <item>Completed</item>
+        <item>Overdue</item>
+    </string-array>
+
+
+    <string-array name="salary_periods">
+        <item>First half - 15th salary (15th to month-end)</item>
+        <item>Second half - Month-end salary (1st to 14th next month)</item>
+    </string-array>
+
+    <string-array name="savings_transaction_types">
+        <item>Contribution</item>
+        <item>Withdrawal</item>
+    </string-array>
+
+    <string-array name="savings_filter_types">
+        <item>All transactions</item>
+        <item>Contributions</item>
+        <item>Withdrawals</item>
+    </string-array>
+
+    <string-array name="settings_currency_options">
+        <item>PHP - Philippine Peso (₱)</item>
+        <item>USD - US Dollar ($)</item>
+        <item>EUR - Euro (€)</item>
+        <item>GBP - British Pound (£)</item>
+    </string-array>
+
+    <string-array name="settings_date_formats">
+        <item>DD/MM/YYYY</item>
+        <item>MM/DD/YYYY</item>
+        <item>YYYY-MM-DD</item>
+    </string-array>
+
+    <string-array name="settings_pay_schedule_options">
+        <item>Twice a month</item>
+        <item>Weekly</item>
+        <item>Every two weeks</item>
+        <item>Monthly</item>
+        <item>Custom</item>
+    </string-array>
+
+    <string-array name="settings_second_payday_options">
+        <item>Last day of the month</item>
+        <item>Specific day</item>
+    </string-array>
+
+    <string-array name="transactions_type_filter">
+        <item>All transactions</item>
+        <item>Income</item>
+        <item>Expenses</item>
+        <item>Savings contributions</item>
+        <item>Savings withdrawals</item>
+        <item>Bill payments</item>
+        <item>Loan payments</item>
+    </string-array>
+
+    <string-array name="transactions_category_filter">
+        <item>All categories</item>
+        <item>Food &amp; Dining</item>
+        <item>Transportation</item>
+        <item>Groceries</item>
+        <item>Housing &amp; Rent</item>
+        <item>Utilities &amp; Bills</item>
+        <item>Internet &amp; Mobile</item>
+        <item>Shopping</item>
+        <item>Health &amp; Medical</item>
+        <item>Education</item>
+        <item>Family</item>
+        <item>Entertainment</item>
+        <item>Subscriptions</item>
+        <item>Personal Care</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="transactions_payday_filter">
+        <item>All payday periods</item>
+        <item>15th salary period</item>
+        <item>Month-end salary period</item>
+        <item>Not assigned</item>
+        <item>Not applicable</item>
+    </string-array>
+
+
+    <string-array name="obligation_types">
+        <item>Utility Bill</item>
+        <item>Housing</item>
+        <item>Loan Installment</item>
+        <item>Insurance</item>
+        <item>Subscription</item>
+        <item>Credit Card</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="obligation_repeat_options">
+        <item>One-time</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Quarterly</item>
+        <item>Yearly</item>
+    </string-array>
+
+    <string-array name="payment_methods">
+        <item>Cash</item>
+        <item>GCash</item>
+        <item>Maya</item>
+        <item>Bank Transfer</item>
+        <item>Debit Card</item>
+        <item>Credit Card</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="obligation_status_filters">
+        <item>All Statuses</item>
+        <item>Upcoming</item>
+        <item>Due Today</item>
+        <item>Overdue</item>
+        <item>Partially Paid</item>
+        <item>Paid</item>
+    </string-array>
+
+
+
+
+
+
+
+</resources>

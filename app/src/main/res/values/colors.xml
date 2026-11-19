@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Branding -->
+    <color name="brand_primary">#6558D3</color>
+    <color name="brand_on_primary">#FFFFFF</color>
+    <color name="brand_secondary">#8175D8</color>
+    <color name="brand_on_secondary">#FFFFFF</color>
+    <color name="brand_soft">#EFEDFF</color>
+
+    <!-- Light Mode -->
+    <color name="app_background">#F5F6FA</color>
+    <color name="app_surface">#FFFFFF</color>
+    <color name="app_surface_variant">#F0EFF7</color>
+    <color name="app_text">#202334</color>
+    <color name="app_text_secondary">#858B9E</color>
+    <color name="app_text_muted">#50556B</color>
+    <color name="app_outline">#E5E5ED</color>
+    <color name="neutral_soft">#EAECF2</color>
+
+    <!-- Success -->
+    <color name="success_color">#149B71</color>
+    <color name="success_soft">#E7F7F0</color>
+
+    <!-- Warning -->
+    <color name="warning_color">#D58A36</color>
+    <color name="warning_soft">#FFF5E9</color>
+
+    <!-- Error -->
+    <color name="danger_color">#D85D68</color>
+    <color name="danger_soft">#FFF0F0</color>
+
+
+
+</resources>

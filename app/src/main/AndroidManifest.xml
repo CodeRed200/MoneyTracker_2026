@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.moneytracker">
+
+    <!-- Network access for Firebase Authentication and Cloud Firestore -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/x"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/x"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MoneyTracker">
+
+        <!-- ====================================== -->
+        <!-- AUTHENTICATION                         -->
+        <!-- ====================================== -->
+
+        <!-- Login: Main launcher activity -->
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- Account Registration -->
+        <activity
+            android:name=".SignUp"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Password Recovery -->
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Email Verification -->
+        <activity
+            android:name=".EmailVerificationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ====================================== -->
+        <!-- MAIN APPLICATION                       -->
+        <!-- ====================================== -->
+
+        <!-- Main Dashboard -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ====================================== -->
+        <!-- FINANCIAL MANAGEMENT                   -->
+        <!-- ====================================== -->
+
+        <!-- Payday Calendar -->
+        <activity
+            android:name=".CalendarActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Savings Goals -->
+        <activity
+            android:name=".GoalsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Smart Financial Insights -->
+        <activity
+            android:name=".InsightsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Premium Analytics -->
+        <activity
+            android:name=".AnalyticsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Salary and Benefits -->
+        <activity
+            android:name=".SalaryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Daily Expenses -->
+        <activity
+            android:name=".ExpensesActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- All Transactions -->
+        <activity
+            android:name=".TransactionsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Savings Records -->
+        <activity
+            android:name=".SavingsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Loans and Interest -->
+        <activity
+            android:name=".LoansActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Bills and Unpaid Payments -->
+        <activity
+            android:name=".ObligationsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Monthly and Annual Reports -->
+        <activity
+            android:name=".ReportsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Application Settings -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+    </application>
+
+</manifest>
